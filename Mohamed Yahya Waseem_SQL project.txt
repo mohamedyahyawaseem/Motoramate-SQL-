@@ -1,0 +1,1180 @@
+                                                         SQL PROJECT							Mohamed Yahya Waseem.M
+															8124294844
+															yahiyamaddy@gmail.com
+
+                                               MOTOR INSURANCE POLICY - MOTORAMATE
+
+
+
+select * from user_tables;
+
+select * from vehicle_make;          #1
+select * from vehicle_model;         #2
+SELECT * FROM VEHICLEBODYTYPE;       #3
+SELECT * FROM VEHICLECATEGORY;       #4
+select * from user_info;             #5
+select * from user_login;            #6
+select * from broker_info;           #7
+SELECT * FROM PREMIUM_RATECONFIG;    #8
+SELECT * FROM PREMIUM_RATECONFIG;    #9
+select * from quote_info;            #10
+select* from lov;                    #11
+
+
+
+
+
+/*--1st table
+
+--------------------------------------------Creating Table vehicle_make-------------------------------
+
+
+create table vehicle_make
+(make_id number primary key,
+make_desc varchar(25) not null,
+status varchar(25) not null,
+added_on date,
+added_by varchar(25)
+);
+
+---------------------DATA TO INSERT IN THE TABLE-------------------------
+
+
+INSERT INTO vehicle_make (make_id, make_desc, status, added_on, added_by) 
+VALUES 
+(1, 'Toyota', 'active', SYSDATE, 'admin');
+INSERT INTO vehicle_make (make_id, make_desc, status, added_on, added_by) 
+VALUES
+(2, 'Honda', 'active', SYSDATE, 'admin')
+INSERT INTO vehicle_make (make_id, make_desc, status, added_on, added_by) 
+VALUES
+(3, 'Ford', 'active', SYSDATE, 'admin');
+INSERT INTO vehicle_make (make_id, make_desc, status, added_on, added_by) 
+VALUES
+(4, 'Chevrolet', 'active', SYSDATE, 'admin');
+INSERT INTO vehicle_make (make_id, make_desc, status, added_on, added_by) 
+VALUES
+(5, 'Nissan', 'active', SYSDATE, 'admin');
+INSERT INTO vehicle_make (make_id, make_desc, status, added_on, added_by) 
+VALUES
+(6, 'BMW', 'active', SYSDATE, 'admin');
+INSERT INTO vehicle_make (make_id, make_desc, status, added_on, added_by) 
+VALUES
+(7, 'Mercedes-Benz', 'active', SYSDATE, 'admin');
+INSERT INTO vehicle_make (make_id, make_desc, status, added_on, added_by) 
+VALUES
+(8, 'Hyundai', 'active', SYSDATE, 'admin');
+INSERT INTO vehicle_make (make_id, make_desc, status, added_on, added_by) 
+VALUES
+(9, 'Kia', 'active', SYSDATE, 'admin');
+INSERT INTO vehicle_make (make_id, make_desc, status, added_on, added_by) 
+VALUES
+(10, 'Volkswagen', 'active', SYSDATE, 'admin');
+INSERT INTO vehicle_make (make_id, make_desc, status, added_on, added_by) 
+VALUES
+(11, 'Audi', 'active', SYSDATE, 'admin');
+INSERT INTO vehicle_make (make_id, make_desc, status, added_on, added_by) 
+VALUES
+(12, 'Porsche', 'active', SYSDATE, 'admin');
+INSERT INTO vehicle_make (make_id, make_desc, status, added_on, added_by) 
+VALUES
+(13, 'Subaru', 'active', SYSDATE, 'admin');
+INSERT INTO vehicle_make (make_id, make_desc, status, added_on, added_by) 
+VALUES
+(14, 'Mazda', 'active', SYSDATE, 'admin');
+INSERT INTO vehicle_make (make_id, make_desc, status, added_on, added_by) 
+VALUES
+(15, 'Jeep', 'active', SYSDATE, 'admin');
+INSERT INTO vehicle_make (make_id, make_desc, status, added_on, added_by) 
+VALUES
+(16, 'Land Rover', 'active', SYSDATE, 'admin');
+INSERT INTO vehicle_make (make_id, make_desc, status, added_on, added_by) 
+VALUES
+(17, 'Volvo', 'active', SYSDATE, 'admin');
+INSERT INTO vehicle_make (make_id, make_desc, status, added_on, added_by) 
+VALUES
+(18, 'Tesla', 'active', SYSDATE, 'admin');
+INSERT INTO vehicle_make (make_id, make_desc, status, added_on, added_by) 
+VALUES
+(19, 'Mitsubishi', 'active', SYSDATE, 'admin');
+INSERT INTO vehicle_make (make_id, make_desc, status, added_on, added_by) 
+VALUES
+(20, 'Suzuki', 'active', SYSDATE, 'admin');
+INSERT INTO vehicle_make (make_id, make_desc, status, added_on, added_by) 
+VALUES
+(21, 'Peugeot', 'inactive', SYSDATE, 'admin');
+INSERT INTO vehicle_make (make_id, make_desc, status, added_on, added_by) 
+VALUES
+(22, 'Fiat', 'inactive', SYSDATE, 'admin');
+INSERT INTO vehicle_make (make_id, make_desc, status, added_on, added_by) 
+VALUES
+(23, 'Renault', 'active', SYSDATE, 'admin');
+INSERT INTO vehicle_make (make_id, make_desc, status, added_on, added_by) 
+VALUES
+(24, 'Lexus', 'active', SYSDATE, 'admin');
+INSERT INTO vehicle_make (make_id, make_desc, status, added_on, added_by) 
+VALUES
+(25, 'Jaguar', 'active', SYSDATE, 'admin')
+
+--2nd table
+
+----------------------------------------Creating vechicle_model----------------------------------------------------
+
+
+CREATE TABLE vehicle_model (
+    model_id NUMBER PRIMARY KEY,
+    model_desc VARCHAR2(100) NOT NULL,
+    make_id NUMBER REFERENCES vehicle_make(make_id),
+    status VARCHAR2(10) NOT NULL CHECK (status IN ('active', 'inactive')),
+    added_on DATE DEFAULT SYSDATE,
+    added_by VARCHAR2(50)
+);
+
+
+--------------------------Data to insert vehicle_model--------------------------------------------
+
+
+
+INSERT INTO vehicle_model (model_id, model_desc, make_id, status, added_on, added_by) 
+VALUES 
+(1, 'Corolla', 1, 'active', SYSDATE, 'admin');      -- Toyota
+INSERT INTO vehicle_model (model_id, model_desc, make_id, status, added_on, added_by) 
+VALUES 
+(2, 'Camry', 1, 'active', SYSDATE, 'admin');        -- Toyota
+
+INSERT INTO vehicle_model (model_id, model_desc, make_id, status, added_on, added_by) 
+VALUES (3, 'Civic', 2, 'active', SYSDATE, 'admin');       -- Honda
+(4, 'Accord', 2, 'active', SYSDATE, 'admin'),       -- Honda
+INSERT INTO vehicle_model (model_id, model_desc, make_id, status, added_on, added_by) 
+VALUES (5, 'F-150', 3, 'active', SYSDATE, 'admin');       -- Ford
+INSERT INTO vehicle_model (model_id, model_desc, make_id, status, added_on, added_by) 
+VALUES (6, 'Explorer', 3, 'inactive', SYSDATE, 'admin');   -- Ford
+INSERT INTO vehicle_model (model_id, model_desc, make_id, status, added_on, added_by) 
+VALUES (7, 'Silverado', 4, 'active', SYSDATE, 'admin');    -- Chevrolet
+INSERT INTO vehicle_model (model_id, model_desc, make_id, status, added_on, added_by) 
+VALUES (8, 'Altima', 5, 'active', SYSDATE, 'admin';       -- Nissan
+INSERT INTO vehicle_model (model_id, model_desc, make_id, status, added_on, added_by) 
+VALUES (9, 'Sentra', 5, 'inactive', SYSDATE, 'admin');     -- Nissan
+INSERT INTO vehicle_model (model_id, model_desc, make_id, status, added_on, added_by) 
+VALUES (10, 'X5', 6, 'active', SYSDATE, 'admin');          -- BMW
+INSERT INTO vehicle_model (model_id, model_desc, make_id, status, added_on, added_by) 
+VALUES (11, '3 Series', 6, 'active', SYSDATE, 'admin');    -- BMW
+INSERT INTO vehicle_model (model_id, model_desc, make_id, status, added_on, added_by) 
+VALUES (12, 'E-Class', 7, 'active', SYSDATE, 'admin');     -- Mercedes-Benz
+INSERT INTO vehicle_model (model_id, model_desc, make_id, status, added_on, added_by) 
+VALUES (13, 'C-Class', 7, 'active', SYSDATE, 'admin');     -- Mercedes-Benz
+INSERT INTO vehicle_model (model_id, model_desc, make_id, status, added_on, added_by) 
+VALUES (14, 'Elantra', 8, 'active', SYSDATE, 'admin');     -- Hyundai
+INSERT INTO vehicle_model (model_id, model_desc, make_id, status, added_on, added_by) 
+VALUES (15, 'Sonata', 8, 'inactive', SYSDATE, 'admin');    -- Hyundai
+INSERT INTO vehicle_model (model_id, model_desc, make_id, status, added_on, added_by) 
+VALUES (16, 'Sportage', 9, 'active', SYSDATE, 'admin');    -- Kia
+INSERT INTO vehicle_model (model_id, model_desc, make_id, status, added_on, added_by) 
+VALUES (17, 'Seltos', 9, 'active', SYSDATE, 'admin');      -- Kia
+INSERT INTO vehicle_model (model_id, model_desc, make_id, status, added_on, added_by) 
+VALUES (18, 'Golf', 10, 'inactive', SYSDATE, 'admin');     -- Volkswagen
+INSERT INTO vehicle_model (model_id, model_desc, make_id, status, added_on, added_by) 
+VALUES (19, 'Jetta', 10, 'active', SYSDATE, 'admin');      -- Volkswagen
+INSERT INTO vehicle_model (model_id, model_desc, make_id, status, added_on, added_by) 
+VALUES (20, 'Model S', 18, 'active', SYSDATE, 'admin');    -- Tesla
+INSERT INTO vehicle_model (model_id, model_desc, make_id, status, added_on, added_by) 
+VALUES (21, 'Model 3', 18, 'active', SYSDATE, 'admin');    -- Tesla
+INSERT INTO vehicle_model (model_id, model_desc, make_id, status, added_on, added_by) 
+VALUES (22, 'Defender', 16, 'active', SYSDATE, 'admin');   -- Land Rover
+INSERT INTO vehicle_model (model_id, model_desc, make_id, status, added_on, added_by) 
+VALUES (23, 'Discovery', 16, 'active', SYSDATE, 'admin');  -- Land Rover
+INSERT INTO vehicle_model (model_id, model_desc, make_id, status, added_on, added_by) 
+VALUES (24, 'CX-5', 14, 'active', SYSDATE, 'admin');       -- Mazda
+INSERT INTO vehicle_model (model_id, model_desc, make_id, status, added_on, added_by) 
+VALUES (25, 'Mazda 3', 14, 'active', SYSDATE, 'admin'); -- Mazda
+
+
+
+----------------------------------------------table of user_info-----------------------------------------------------
+
+
+
+create table user_info (
+user_id number primary key,
+usertype varchar(30),
+first_name varchar(25),
+last_name  varchar(25),
+gender varchar(10) check(gender in('male','female','other')),
+dob date not null,
+email varchar(25),
+marital_status number,
+education number,
+phone varchar(15) not null,
+mobail varchar(15),
+addr1 varchar(30),
+addr2 varchar(30),
+addr3 varchar(30),
+street varchar(25),
+city varchar(25),
+state_ varchar(30),
+country varchar(30),
+national_id number not null,
+nationality number not null,
+user_status varchar(10) not null check(user_status in('active','inactive')),
+added_on date default sysdate,
+added_by varchar(25)
+);
+
+
+----------------------------------DATA FOR THIS TABLE---------------------------------------------------------
+
+
+INSERT INTO user_info (
+    user_id, usertype, first_name, last_name, gender, dob, email, marital_status, education, phone, mobail, 
+    addr1, addr2, addr3, street, city, state_, country, national_id, nationality, user_status, added_on, added_by
+) 
+VALUES 
+(user_id_seq.nextval, 'broker', 'John', 'Doe', 'male', DATE '1985-05-20', 'john.doe@mail.com', 1, 3, '05115234567', '05115555555', 
+ '123 Main St', NULL, NULL, 'Elm Street', 'New York', 'NY', 'USA', 1234567890, 1, 'active', SYSDATE, 'admin');
+INSERT INTO user_info (
+    user_id, usertype, first_name, last_name, gender, dob, email, marital_status, education, phone, mobail, 
+    addr1, addr2, addr3, street, city, state_, country, national_id, nationality, user_status, added_on, added_by
+) 
+VALUES (user_id_seq.nextval, 'sales agent', 'Jane', 'Smith', 'female', DATE '1990-08-15', 'jane.smith@mail.com', 2, 4, '05115234568', '05115555556', 
+ '456 Elm St', NULL, NULL, 'Maple Street', 'Los Angeles', 'CA', 'USA', 2234567890, 1, 'active', SYSDATE, 'admin');
+INSERT INTO user_info (
+    user_id, usertype, first_name, last_name, gender, dob, email, marital_status, education, phone, mobail, 
+    addr1, addr2, addr3, street, city, state_, country, national_id, nationality, user_status, added_on, added_by
+) 
+VALUES (user_id_seq.nextval, 'broker', 'Alice', 'Johnson', 'female', DATE '1988-12-01', 'alice.johnson@mail.com', 1, 3, '05115234569', '05115555557', 
+ '789 Oak St', NULL, NULL, 'Pine Street', 'Chicago', 'IL', 'USA', 3234567890, 2, 'active', SYSDATE, 'admin');
+INSERT INTO user_info (
+    user_id, usertype, first_name, last_name, gender, dob, email, marital_status, education, phone, mobail, 
+    addr1, addr2, addr3, street, city, state_, country, national_id, nationality, user_status, added_on, added_by
+) 
+VALUES (user_id_seq.nextval, 'user', 'Bob', 'Williams', 'male', DATE '1975-07-22', 'bob.williams@mail.com', 1, 5, '05115234570', '05115555558', 
+ '321 Pine St', NULL, NULL, 'Cedar Street', 'Houston', 'TX', 'USA', 4234567890, 1, 'active', SYSDATE, 'admin');
+INSERT INTO user_info (
+    user_id, usertype, first_name, last_name, gender, dob, email, marital_status, education, phone, mobail, 
+    addr1, addr2, addr3, street, city, state_, country, national_id, nationality, user_status, added_on, added_by
+) 
+VALUES (user_id_seq.nextval, 'sales agent', 'Charlie', 'Brown', 'male', DATE '1992-03-18', 'charlie.brown@mail.com', 2, 2, '05115234571', '05115555559', 
+ '654 Birch St', NULL, NULL, 'Ash Street', 'Phoenix', 'AZ', 'USA', 5234567890, 3, 'active', SYSDATE, 'admin');
+INSERT INTO user_info (
+    user_id, usertype, first_name, last_name, gender, dob, email, marital_status, education, phone, mobail, 
+    addr1, addr2, addr3, street, city, state_, country, national_id, nationality, user_status, added_on, added_by
+) 
+VALUES (user_id_seq.nextval, 'broker', 'David', 'Miller', 'male', DATE '1980-11-10', 'david.miller@mail.com', 1, 4, '05115234572', '05115555560', 
+ '987 Spruce St', NULL, NULL, 'Hickory Street', 'Philadelphia', 'PA', 'USA', 6234567890, 2, 'inactive', SYSDATE, 'admin');
+INSERT INTO user_info (
+    user_id, usertype, first_name, last_name, gender, dob, email, marital_status, education, phone, mobail, 
+    addr1, addr2, addr3, street, city, state_, country, national_id, nationality, user_status, added_on, added_by
+) 
+VALUES (user_id_seq.nextval, 'user', 'Eve', 'Davis', 'female', DATE '1983-06-30', 'eve.davis@mail.com', 1, 4, '05115234573', '05115555561', 
+ '147 Aspen St', NULL, NULL, 'Poplar Street', 'San Antonio', 'TX', 'USA', 7234567890, 1, 'active', SYSDATE, 'admin');
+INSERT INTO user_info (
+    user_id, usertype, first_name, last_name, gender, dob, email, marital_status, education, phone, mobail, 
+    addr1, addr2, addr3, street, city, state_, country, national_id, nationality, user_status, added_on, added_by
+) 
+VALUES (user_id_seq.nextval, 'broker', 'Frank', 'Garcia', 'male', DATE '1995-09-12', 'frank.garcia@mail.com', 1, 3, '05115234574', '05115555562', 
+ '258 Beech St', NULL, NULL, 'Fir Street', 'San Diego', 'CA', 'USA', 8234567890, 3, 'active', SYSDATE, 'admin');
+INSERT INTO user_info (
+    user_id, usertype, first_name, last_name, gender, dob, email, marital_status, education, phone, mobail, 
+    addr1, addr2, addr3, street, city, state_, country, national_id, nationality, user_status, added_on, added_by
+) 
+VALUES (user_id_seq.nextval, 'sales agent', 'Grace', 'Martinez', 'female', DATE '1987-04-25', 'grace.martinez@mail.com', 2, 5, '05115234575', '05115555563', 
+ '369 Cypress St', NULL, NULL, 'Hemlock Street', 'Dallas', 'TX', 'USA', 9234567890, 1, 'inactive', SYSDATE, 'admin');
+INSERT INTO user_info (
+    user_id, usertype, first_name, last_name, gender, dob, email, marital_status, education, phone, mobail, 
+    addr1, addr2, addr3, street, city, state_, country, national_id, nationality, user_status, added_on, added_by
+) 
+VALUES (user_id_seq.nextval, 'user', 'Hank', 'Rodriguez', 'male', DATE '1990-01-07', 'hank.rodriguez@mail.com', 1, 2, '05115234576', '05115555564', 
+ '159 Alder St', NULL, NULL, 'Magnolia Street', 'San Jose', 'CA', 'USA', 1123456789, 2, 'active', SYSDATE, 'admin');
+INSERT INTO user_info (
+    user_id, usertype, first_name, last_name, gender, dob, email, marital_status, education, phone, mobail, 
+    addr1, addr2, addr3, street, city, state_, country, national_id, nationality, user_status, added_on, added_by
+) 
+VALUES (user_id_seq.nextval, 'broker', 'Ivy', 'Martinez', 'female', DATE '1992-11-11', 'ivy.martinez@mail.com', 1, 4, '05115234577', '05115555565', 
+ '753 Redwood St', NULL, NULL, 'Dogwood Street', 'Austin', 'TX', 'USA', 2123456789, 1, 'active', SYSDATE, 'admin');
+INSERT INTO user_info (
+    user_id, usertype, first_name, last_name, gender, dob, email, marital_status, education, phone, mobail, 
+    addr1, addr2, addr3, street, city, state_, country, national_id, nationality, user_status, added_on, added_by
+) 
+VALUES (user_id_seq.nextval, 'sales agent', 'Jack', 'Wilson', 'male', DATE '1985-02-14', 'jack.wilson@mail.com', 1, 3, '05115234578', '05115555566', 
+ '951 Sequoia St', NULL, NULL, 'Hawthorn Street', 'Jacksonville', 'FL', 'USA', 3123456789, 3, 'active', SYSDATE, 'admin');
+-- Add more rows in a similar pattern up to 25.
+
+
+
+-----------------------------Table of user_login-----------------------------------------------------------------------
+
+
+create table user_login (
+login_id number primary key,
+password_ varchar(20),
+user_id number REFERENCES user_info(user_id),
+lead_id number,
+usertype varchar(25) not null,
+user_status varchar(15) not null,
+added_on date default sysdate,
+added_by varchar(30)
+);
+
+
+-------------------------DATA TO INSER FOR THIS TABLE----------------------------
+
+
+INSERT INTO user_login (
+    login_id, password_, user_id, lead_id, usertype, user_status, added_on, added_by
+) 
+VALUES 
+(1, 'pass1234', 1, NULL, 'broker', 'active', SYSDATE, 'admin'); 
+
+INSERT INTO user_login (
+    login_id, password_, user_id, lead_id, usertype, user_status, added_on, added_by
+) 
+VALUES -- Broker
+(2, 'password1', 2, 1, 'sales agent', 'active', SYSDATE, 'admin');
+
+INSERT INTO user_login (
+    login_id, password_, user_id, lead_id, usertype, user_status, added_on, added_by
+) 
+VALUES (3, 'password2', 3, NULL, 'broker', 'inactive', SYSDATE, 'admin');
+
+INSERT INTO user_login (
+    login_id, password_, user_id, lead_id, usertype, user_status, added_on, added_by
+) 
+VALUES (4, 'password3', 4, 1, 'user', 'active', SYSDATE, 'admin');       
+
+INSERT INTO user_login (
+    login_id, password_, user_id, lead_id, usertype, user_status, added_on, added_by
+) 
+VALUES (5, 'password4', 5, 3, 'sales agent', 'inactive', SYSDATE, 'admin'); 
+
+INSERT INTO user_login (
+    login_id, password_, user_id, lead_id, usertype, user_status, added_on, added_by
+) 
+VALUES (6, 'password5', 6, NULL, 'broker', 'active', SYSDATE, 'admin');   
+
+INSERT INTO user_login (
+    login_id, password_, user_id, lead_id, usertype, user_status, added_on, added_by
+) 
+VALUES (7, 'password6', 7, 4, 'user', 'active', SYSDATE, 'admin');        
+INSERT INTO user_login (
+    login_id, password_, user_id, lead_id, usertype, user_status, added_on, added_by
+) 
+VALUES (8, 'password7', 8, NULL, 'broker', 'inactive', SYSDATE, 'admin'); 
+INSERT INTO user_login (
+    login_id, password_, user_id, lead_id, usertype, user_status, added_on, added_by
+) 
+VALUES (9, 'password8', 9, 6, 'sales agent', 'active', SYSDATE, 'admin'); 
+INSERT INTO user_login (
+    login_id, password_, user_id, lead_id, usertype, user_status, added_on, added_by
+) 
+VALUES (10, 'password9', 10, 4, 'user', 'inactive', SYSDATE, 'admin');    
+INSERT INTO user_login (
+    login_id, password_, user_id, lead_id, usertype, user_status, added_on, added_by
+) 
+VALUES (11, 'password10', 11, NULL, 'broker', 'active', SYSDATE, 'admin'); 
+INSERT INTO user_login (
+    login_id, password_, user_id, lead_id, usertype, user_status, added_on, added_by
+) 
+VALUES (12, 'password11', 12, 11, 'sales agent', 'active', SYSDATE, 'admin'); 
+INSERT INTO user_login (
+    login_id, password_, user_id, lead_id, usertype, user_status, added_on, added_by
+) 
+VALUES (13, 'password12', 13, NULL, 'broker', 'inactive', SYSDATE, 'admin'); 
+INSERT INTO user_login (
+    login_id, password_, user_id, lead_id, usertype, user_status, added_on, added_by
+) 
+VALUES (14, 'password13', 14, 11, 'user', 'active', SYSDATE, 'admin');    
+INSERT INTO user_login (
+    login_id, password_, user_id, lead_id, usertype, user_status, added_on, added_by
+) 
+VALUES (15, 'password14', 15, 13, 'sales agent', 'active', SYSDATE, 'admin'); 
+INSERT INTO user_login (
+    login_id, password_, user_id, lead_id, usertype, user_status, added_on, added_by
+) 
+VALUES (16, 'password15', 16, NULL, 'broker', 'inactive', SYSDATE, 'admin'); 
+INSERT INTO user_login (
+    login_id, password_, user_id, lead_id, usertype, user_status, added_on, added_by
+) 
+VALUES (17, 'password16', 17, 14, 'user', 'active', SYSDATE, 'admin');   -
+INSERT INTO user_login (
+    login_id, password_, user_id, lead_id, usertype, user_status, added_on, added_by
+) 
+VALUES (18, 'password17', 18, NULL, 'broker', 'inactive', SYSDATE, 'admin');
+INSERT INTO user_login (
+    login_id, password_, user_id, lead_id, usertype, user_status, added_on, added_by
+) 
+VALUES (19, 'password18', 19, 16, 'sales agent', 'active', SYSDATE, 'admin'); 
+INSERT INTO user_login (
+    login_id, password_, user_id, lead_id, usertype, user_status, added_on, added_by
+) 
+VALUES (20, 'password19', 20, 14, 'user', 'inactive', SYSDATE, 'admin')  
+INSERT INTO user_login (
+    login_id, password_, user_id, lead_id, usertype, user_status, added_on, added_by
+)
+VALUES (21, 'password20', 21, NULL, 'broker', 'active', SYSDATE, 'admin'); 
+INSERT INTO user_login (
+    login_id, password_, user_id, lead_id, usertype, user_status, added_on, added_by
+) 
+VALUES (22, 'password21', 22, 21, 'sales agent', 'active', SYSDATE, 'admin'); 
+INSERT INTO user_login (
+    login_id, password_, user_id, lead_id, usertype, user_status, added_on, added_by
+) 
+VALUES (23, 'password22', 23, NULL, 'broker', 'inactive', SYSDATE, 'admin'); 
+INSERT INTO user_login (
+    login_id, password_, user_id, lead_id, usertype, user_status, added_on, added_by
+) 
+VALUES (24, 'password23', 24, 21, 'user', 'active', SYSDATE, 'admin');    
+INSERT INTO user_login (
+    login_id, password_, user_id, lead_id, usertype, user_status, added_on, added_by
+) 
+VALUES (25, 'password24', 25, 23, 'sales agent', 'active', SYSDATE, 'admin'); 
+
+
+
+
+------------------------Table of broker_info--------------------------------------------------------------------------------
+
+
+
+create table broker_info (
+broker_id number primary key,
+broker_name varchar(25),
+broker_org_name varchar(25),
+contact_info varchar(100),
+user_status varchar(25) not null,
+added_on date default sysdate,
+added_by varchar(25)
+);
+
+
+---------------------DATA TO INSERT IN THIS TABLE--------------------------
+
+
+
+Insert 25 Records into broker_info Table
+INSERT INTO broker_info (
+    broker_id, broker_name, broker_org_name, contact_info, user_status, added_on, added_by
+) 
+VALUES 
+(1, 'John Carter', 'Carter Insurance', '123 Elm St, New York, NY, USA, +1-555-1234', 'active', SYSDATE, 'admin');
+
+INSERT INTO broker_info (
+    broker_id, broker_name, broker_org_name, contact_info, user_status, added_on, added_by
+) 
+VALUES
+(2, 'Emma Watson', 'Watson Brokers', '456 Maple Ave, Los Angeles, CA, USA, +1-555-5678', 'active', SYSDATE, 'admin');
+
+INSERT INTO broker_info (
+    broker_id, broker_name, broker_org_name, contact_info, user_status, added_on, added_by
+) 
+VALUES
+(3, 'Michael Brown', 'Brown & Co.', '789 Oak Blvd, Chicago, IL, USA, +1-555-9876', 'inactive', SYSDATE, 'admin');
+
+INSERT INTO broker_info (
+    broker_id, broker_name, broker_org_name, contact_info, user_status, added_on, added_by
+) 
+VALUES
+(4, 'Sophia Davis', 'Davis Insurance', '321 Pine St, Houston, TX, USA, +1-555-4321', 'active', SYSDATE, 'admin');
+
+INSERT INTO broker_info (
+    broker_id, broker_name, broker_org_name, contact_info, user_status, added_on, added_by
+) 
+VALUES
+(5, 'James Wilson', 'Wilson Group', '654 Cedar Rd, Phoenix, AZ, USA, +1-555-8765', 'inactive', SYSDATE, 'admin')
+
+INSERT INTO broker_info (
+    broker_id, broker_name, broker_org_name, contact_info, user_status, added_on, added_by
+) 
+VALUES
+(6, 'Olivia Johnson', 'Johnson Partners', '987 Birch Ln, Philadelphia, PA, USA, +1-555-2345', 'active', SYSDATE, 'admin');
+INSERT INTO broker_info (
+    broker_id, broker_name, broker_org_name, contact_info, user_status, added_on, added_by
+) 
+VALUES
+(7, 'Liam Smith', 'Smith Brokers', '147 Aspen Dr, San Antonio, TX, USA, +1-555-6543', 'active', SYSDATE, 'admin');
+INSERT INTO broker_info (
+    broker_id, broker_name, broker_org_name, contact_info, user_status, added_on, added_by
+) 
+VALUES
+(8, 'Mia Williams', 'Williams Insurance', '258 Beech Ct, Dallas, TX, USA, +1-555-3456', 'inactive', SYSDATE, 'admin');
+INSERT INTO broker_info (
+    broker_id, broker_name, broker_org_name, contact_info, user_status, added_on, added_by
+) 
+VALUES
+(9, 'Noah Garcia', 'Garcia Associates', '369 Cypress Ave, San Diego, CA, USA, +1-555-7890', 'active', SYSDATE, 'admin');
+INSERT INTO broker_info (
+    broker_id, broker_name, broker_org_name, contact_info, user_status, added_on, added_by
+) 
+VALUES
+(10, 'Charlotte Martin', 'Martin Agency', '159 Alder St, San Jose, CA, USA, +1-555-1235', 'active', SYSDATE, 'admin');
+INSERT INTO broker_info (
+    broker_id, broker_name, broker_org_name, contact_info, user_status, added_on, added_by
+) 
+VALUES
+(11, 'Elijah Martinez', 'Martinez Brokers', '753 Redwood St, Austin, TX, USA, +1-555-4567', 'inactive', SYSDATE, 'admin');
+INSERT INTO broker_info (
+    broker_id, broker_name, broker_org_name, contact_info, user_status, added_on, added_by
+) 
+VALUES
+(12, 'Amelia Rodriguez', 'Rodriguez Group', '951 Sequoia Ln, Jacksonville, FL, USA, +1-555-7654', 'active', SYSDATE, 'admin');
+INSERT INTO broker_info (
+    broker_id, broker_name, broker_org_name, contact_info, user_status, added_on, added_by
+) 
+VALUES
+(13, 'Logan Lewis', 'Lewis & Partners', '357 Poplar St, Fort Worth, TX, USA, +1-555-6789', 'inactive', SYSDATE, 'admin');
+INSERT INTO broker_info (
+    broker_id, broker_name, broker_org_name, contact_info, user_status, added_on, added_by
+) 
+VALUES
+(14, 'Harper Walker', 'Walker Insurance', '852 Fir St, Columbus, OH, USA, +1-555-4323', 'active', SYSDATE, 'admin');
+INSERT INTO broker_info (
+    broker_id, broker_name, broker_org_name, contact_info, user_status, added_on, added_by
+) 
+VALUES
+(15, 'Mason Allen', 'Allen & Co.', '951 Magnolia Ave, Charlotte, NC, USA, +1-555-8764', 'active', SYSDATE, 'admin');
+INSERT INTO broker_info (
+    broker_id, broker_name, broker_org_name, contact_info, user_status, added_on, added_by
+) 
+VALUES
+(16, 'Ella Young', 'Young Associates', '123 Hemlock Rd, Indianapolis, IN, USA, +1-555-2346', 'inactive', SYSDATE, 'admin');
+INSERT INTO broker_info (
+    broker_id, broker_name, broker_org_name, contact_info, user_status, added_on, added_by
+) 
+VALUES
+(17, 'Oliver Wright', 'Wright Agency', '456 Dogwood Blvd, Seattle, WA, USA, +1-555-6542', 'active', SYSDATE, 'admin');
+INSERT INTO broker_info (
+    broker_id, broker_name, broker_org_name, contact_info, user_status, added_on, added_by
+) 
+VALUES
+(18, 'Ava Hill', 'Hill Brokers', '789 Cedar Ave, Denver, CO, USA, +1-555-3457', 'inactive', SYSDATE, 'admin');
+INSERT INTO broker_info (
+    broker_id, broker_name, broker_org_name, contact_info, user_status, added_on, added_by
+) 
+VALUES
+(19, 'Benjamin Green', 'Green Insurance', '321 Hickory Ln, Boston, MA, USA, +1-555-7891', 'active', SYSDATE, 'admin');
+INSERT INTO broker_info (
+    broker_id, broker_name, broker_org_name, contact_info, user_status, added_on, added_by
+) 
+VALUES
+(20, 'Isabella Baker', 'Baker Agency', '654 Ash St, Nashville, TN, USA, +1-555-1236', 'active', SYSDATE, 'admin');
+INSERT INTO broker_info (
+    broker_id, broker_name, broker_org_name, contact_info, user_status, added_on, added_by
+) 
+VALUES
+(21, 'Lucas Scott', 'Scott Brokers', '987 Maple Dr, Milwaukee, WI, USA, +1-555-5679', 'inactive', SYSDATE, 'admin');
+INSERT INTO broker_info (
+    broker_id, broker_name, broker_org_name, contact_info, user_status, added_on, added_by
+) 
+VALUES
+(22, 'Evelyn Cooper', 'Cooper & Co.', '147 Elm Ave, Portland, OR, USA, +1-555-4322', 'active', SYSDATE, 'admin');
+INSERT INTO broker_info (
+    broker_id, broker_name, broker_org_name, contact_info, user_status, added_on, added_by
+) 
+VALUES
+(23, 'Henry Perez', 'Perez Group', '258 Oak St, Las Vegas, NV, USA, +1-555-8766', 'inactive', SYSDATE, 'admin');
+INSERT INTO broker_info (
+    broker_id, broker_name, broker_org_name, contact_info, user_status, added_on, added_by
+) 
+VALUES
+(24, 'Sophia Flores', 'Flores Brokers', '369 Pine Ct, Memphis, TN, USA, +1-555-2347', 'active', SYSDATE, 'admin');
+INSERT INTO broker_info (
+    broker_id, broker_name, broker_org_name, contact_info, user_status, added_on, added_by
+) 
+VALUES
+(25, 'Jack Rivera', 'Rivera Insurance', '159 Beech Ln, Detroit, MI, USA, +1-555-3458', 'active', SYSDATE, 'admin');
+
+
+
+
+---------------------------------------------Table of quote_info------------------------------------------------------------------
+
+
+
+CREATE TABLE quote_info (
+    quote_id NUMBER PRIMARY KEY,
+    user_id NUMBER REFERENCES user_info(user_id),
+    vehicle_id NUMBER,
+    coverage_type VARCHAR2(50),
+    premium_amount NUMBER(10, 2),
+    taxes NUMBER(10, 2),
+    final_premium NUMBER(10, 2),
+    status VARCHAR2(10) NOT NULL CHECK (status IN ('active', 'inactive')),
+    created_on DATE DEFAULT SYSDATE
+);
+
+
+
+--------------------------Data for this Table-------------------------------------------------
+
+
+
+
+-- Insert 25 Records into quote_info Table
+INSERT INTO quote_info (
+    quote_id, user_id, vehicle_id, coverage_type, premium_amount, taxes, final_premium, status, created_on
+) 
+VALUES
+(quo_id_seq.nextval, 1, 1001, 'Comprehensive', 12000.00, 1800.00, 13800.00, 'active', SYSDATE);
+INSERT INTO quote_info (
+    quote_id, user_id, vehicle_id, coverage_type, premium_amount, taxes, final_premium, status, created_on
+) 
+VALUES(quo_id_seq.nextval, 2, 1002, 'Third-Party', 8000.00, 1200.00, 9200.00, 'active', SYSDATE);
+INSERT INTO quote_info (
+    quote_id, user_id, vehicle_id, coverage_type, premium_amount, taxes, final_premium, status, created_on
+) 
+VALUES(quo_id_seq.nextval, 3, 1003, 'Comprehensive', 15000.00, 2250.00, 17250.00, 'inactive', SYSDATE);
+INSERT INTO quote_info (
+    quote_id, user_id, vehicle_id, coverage_type, premium_amount, taxes, final_premium, status, created_on
+) 
+VALUES(quo_id_seq.nextval, 4, 1004, 'Third-Party', 7500.00, 1125.00, 8625.00, 'active', SYSDATE);
+INSERT INTO quote_info (
+    quote_id, user_id, vehicle_id, coverage_type, premium_amount, taxes, final_premium, status, created_on
+) 
+VALUES(quo_id_seq.nextval, 5, 1005, 'Comprehensive', 20000.00, 3000.00, 23000.00, 'inactive', SYSDATE);
+INSERT INTO quote_info (
+    quote_id, user_id, vehicle_id, coverage_type, premium_amount, taxes, final_premium, status, created_on
+) 
+VALUES(quo_id_seq.nextval, 6, 1006, 'Third-Party', 9500.00, 1425.00, 10925.00, 'active', SYSDATE);
+INSERT INTO quote_info (
+    quote_id, user_id, vehicle_id, coverage_type, premium_amount, taxes, final_premium, status, created_on
+) 
+VALUES(quo_id_seq.nextval, 7, 1007, 'Comprehensive', 18000.00, 2700.00, 20700.00, 'active', SYSDATE);
+INSERT INTO quote_info (
+    quote_id, user_id, vehicle_id, coverage_type, premium_amount, taxes, final_premium, status, created_on
+) 
+VALUES(quo_id_seq.nextval, 18, 1008, 'Third-Party', 6500.00, 975.00, 7475.00, 'inactive', SYSDATE);
+INSERT INTO quote_info (
+    quote_id, user_id, vehicle_id, coverage_type, premium_amount, taxes, final_premium, status, created_on
+) 
+VALUES(quo_id_seq.nextval, 9, 1009, 'Comprehensive', 25000.00, 3750.00, 28750.00, 'active', SYSDATE);
+INSERT INTO quote_info (
+    quote_id, user_id, vehicle_id, coverage_type, premium_amount, taxes, final_premium, status, created_on
+) 
+VALUES(quo_id_seq.nextval, 10, 1010, 'Third-Party', 5000.00, 750.00, 5750.00, 'active', SYSDATE);
+INSERT INTO quote_info (
+    quote_id, user_id, vehicle_id, coverage_type, premium_amount, taxes, final_premium, status, created_on
+) 
+VALUES(quo_id_seq.nextval, 11, 1011, 'Comprehensive', 22000.00, 3300.00, 25300.00, 'inactive', SYSDATE)
+INSERT INTO quote_info (
+    quote_id, user_id, vehicle_id, coverage_type, premium_amount, taxes, final_premium, status, created_on
+) 
+VALUES(quo_id_seq.nextval, 12, 1012, 'Third-Party', 10000.00, 1500.00, 11500.00, 'active', SYSDATE);
+INSERT INTO quote_info (
+    quote_id, user_id, vehicle_id, coverage_type, premium_amount, taxes, final_premium, status, created_on
+) 
+VALUES(quo_id_seq.nextval, 13, 1013, 'Comprehensive', 27500.00, 4125.00, 31625.00, 'inactive', SYSDATE);
+INSERT INTO quote_info (
+    quote_id, user_id, vehicle_id, coverage_type, premium_amount, taxes, final_premium, status, created_on
+) 
+VALUES(quo_id_seq.nextval, 14, 1014, 'Third-Party', 8800.00, 1320.00, 10120.00, 'active', SYSDATE);
+INSERT INTO quote_info (
+    quote_id, user_id, vehicle_id, coverage_type, premium_amount, taxes, final_premium, status, created_on
+) 
+VALUES(quo_id_seq.nextval, 15, 1015, 'Comprehensive', 30000.00, 4500.00, 34500.00, 'inactive', SYSDATE);
+INSERT INTO quote_info (
+    quote_id, user_id, vehicle_id, coverage_type, premium_amount, taxes, final_premium, status, created_on
+) 
+VALUES(quo_id_seq.nextval, 16, 1016, 'Third-Party', 12000.00, 1800.00, 13800.00, 'active', SYSDATE);
+INSERT INTO quote_info (
+    quote_id, user_id, vehicle_id, coverage_type, premium_amount, taxes, final_premium, status, created_on
+) 
+VALUES(quo_id_seq.nextval, 17, 1017, 'Comprehensive', 35000.00, 5250.00, 40250.00, 'active', SYSDATE);
+INSERT INTO quote_info (
+    quote_id, user_id, vehicle_id, coverage_type, premium_amount, taxes, final_premium, status, created_on
+) 
+VALUES(quo_id_seq.nextval, 18, 1018, 'Third-Party', 7500.00, 1125.00, 8625.00, 'inactive', SYSDATE);
+INSERT INTO quote_info (
+    quote_id, user_id, vehicle_id, coverage_type, premium_amount, taxes, final_premium, status, created_on
+) 
+VALUES(quo_id_seq.nextval, 19, 1019, 'Comprehensive', 40000.00, 6000.00, 46000.00, 'active', SYSDATE);
+INSERT INTO quote_info (
+    quote_id, user_id, vehicle_id, coverage_type, premium_amount, taxes, final_premium, status, created_on
+) 
+VALUES(quo_id_seq.nextval, 20, 1020, 'Third-Party', 11000.00, 1650.00, 12650.00, 'active', SYSDATE);
+INSERT INTO quote_info (
+    quote_id, user_id, vehicle_id, coverage_type, premium_amount, taxes, final_premium, status, created_on
+) 
+VALUES(quo_id_seq.nextval, 21, 1021, 'Comprehensive', 45000.00, 6750.00, 51750.00, 'inactive', SYSDATE);
+INSERT INTO quote_info (
+    quote_id, user_id, vehicle_id, coverage_type, premium_amount, taxes, final_premium, status, created_on
+) 
+VALUES(quo_id_seq.nextval, 22, 1022, 'Third-Party', 9000.00, 1350.00, 10350.00, 'active', SYSDATE);
+INSERT INTO quote_info (
+    quote_id, user_id, vehicle_id, coverage_type, premium_amount, taxes, final_premium, status, created_on
+) 
+VALUES(quo_id_seq.nextval, 23, 1023, 'Comprehensive', 50000.00, 7500.00, 57500.00, 'inactive', SYSDATE);
+INSERT INTO quote_info (
+    quote_id, user_id, vehicle_id, coverage_type, premium_amount, taxes, final_premium, status, created_on
+) 
+VALUES(quo_id_seq.nextval, 24, 1024, 'Third-Party', 11500.00, 1725.00, 13225.00, 'active', SYSDATE);
+INSERT INTO quote_info (
+    quote_id, user_id, vehicle_id, coverage_type, premium_amount, taxes, final_premium, status, created_on
+) 
+VALUES(quo_id_seq.nextval, 25, 1025, 'Comprehensive', 55000.00, 8250.00, 63250.00, 'active', SYSDATE);
+
+
+
+
+
+----------------------------------------Table Of lov------------------------------------------------------------
+
+
+CREATE TABLE lov (
+    lov_id NUMBER PRIMARY KEY,
+    lov_type VARCHAR2(50) NOT NULL,
+    lov_value VARCHAR2(100) NOT NULL,
+    status VARCHAR2(10) NOT NULL CHECK (status IN ('active', 'inactive')),
+    added_on DATE DEFAULT SYSDATE,
+    added_by VARCHAR2(50)
+
+
+
+
+---------------------Data to insert in this table-------------------------------
+
+
+
+INSERT INTO lov (lov_id, lov_type, lov_value, status, added_on, added_by) VALUES (1, 'Vehicle Color', 'Red', 'active', SYSDATE, 'admin');
+INSERT INTO lov (lov_id, lov_type, lov_value, status, added_on, added_by) VALUES (2, 'Vehicle Color', 'Blue', 'active', SYSDATE, 'editor');
+INSERT INTO lov (lov_id, lov_type, lov_value, status, added_on, added_by) VALUES (3, 'Vehicle Color', 'Black', 'inactive', SYSDATE, 'manager');
+INSERT INTO lov (lov_id, lov_type, lov_value, status, added_on, added_by) VALUES (4, 'Vehicle Color', 'White', 'active', SYSDATE, 'admin');
+INSERT INTO lov (lov_id, lov_type, lov_value, status, added_on, added_by) VALUES (5, 'Vehicle Color', 'Silver', 'active', SYSDATE, 'editor');
+INSERT INTO lov (lov_id, lov_type, lov_value, status, added_on, added_by) VALUES (6, 'Fuel Type', 'Petrol', 'active', SYSDATE, 'manager');
+INSERT INTO lov (lov_id, lov_type, lov_value, status, added_on, added_by) VALUES (7, 'Fuel Type', 'Diesel', 'active', SYSDATE, 'admin');
+INSERT INTO lov (lov_id, lov_type, lov_value, status, added_on, added_by) VALUES (8, 'Fuel Type', 'Electric', 'active', SYSDATE, 'editor');
+INSERT INTO lov (lov_id, lov_type, lov_value, status, added_on, added_by) VALUES (9, 'Fuel Type', 'Hybrid', 'inactive', SYSDATE, 'manager');
+INSERT INTO lov (lov_id, lov_type, lov_value, status, added_on, added_by) VALUES (10, 'Transmission Type', 'Manual', 'active', SYSDATE, 'admin');
+INSERT INTO lov (lov_id, lov_type, lov_value, status, added_on, added_by) VALUES (11, 'Transmission Type', 'Automatic', 'active', SYSDATE, 'editor');
+INSERT INTO lov (lov_id, lov_type, lov_value, status, added_on, added_by) VALUES (12, 'Transmission Type', 'Semi-Automatic', 'inactive', SYSDATE, 'manager');
+INSERT INTO lov (lov_id, lov_type, lov_value, status, added_on, added_by) VALUES (13, 'Vehicle Segment', 'Sedan', 'active', SYSDATE, 'admin');
+INSERT INTO lov (lov_id, lov_type, lov_value, status, added_on, added_by) VALUES (14, 'Vehicle Segment', 'SUV', 'active', SYSDATE, 'editor');
+INSERT INTO lov (lov_id, lov_type, lov_value, status, added_on, added_by) VALUES (15, 'Vehicle Segment', 'Hatchback', 'active', SYSDATE, 'manager');
+INSERT INTO lov (lov_id, lov_type, lov_value, status, added_on, added_by) VALUES (16, 'Vehicle Segment', 'Coupe', 'inactive', SYSDATE, 'admin');
+INSERT INTO lov (lov_id, lov_type, lov_value, status, added_on, added_by) VALUES (17, 'Ownership Status', 'Owned', 'active', SYSDATE, 'editor');
+INSERT INTO lov (lov_id, lov_type, lov_value, status, added_on, added_by) VALUES (18, 'Ownership Status', 'Leased', 'active', SYSDATE, 'admin');
+INSERT INTO lov (lov_id, lov_type, lov_value, status, added_on, added_by) VALUES (19, 'Ownership Status', 'Rented', 'inactive', SYSDATE, 'manager');
+INSERT INTO lov (lov_id, lov_type, lov_value, status, added_on, added_by) VALUES (20, 'Insurance Type', 'Comprehensive', 'active', SYSDATE, 'editor');
+INSERT INTO lov (lov_id, lov_type, lov_value, status, added_on, added_by) VALUES (21, 'Insurance Type', 'Third Party', 'active', SYSDATE, 'admin');
+INSERT INTO lov (lov_id, lov_type, lov_value, status, added_on, added_by) VALUES (22, 'Insurance Type', 'Personal Accident', 'inactive', SYSDATE, 'manager');
+INSERT INTO lov (lov_id, lov_type, lov_value, status, added_on, added_by) VALUES (23, 'Payment Method', 'Cash', 'active', SYSDATE, 'admin');
+INSERT INTO lov (lov_id, lov_type, lov_value, status, added_on, added_by) VALUES (24, 'Payment Method', 'Loan', 'active', SYSDATE, 'editor');
+INSERT INTO lov (lov_id, lov_type, lov_value, status, added_on, added_by) VALUES (25, 'Payment Method', 'EMI', 'inactive', SYSDATE, 'manager');
+
+
+
+
+
+
+--------------------------------------------Table of VehicleCategory-------------------------------------------------------
+
+
+
+CREATE TABLE VehicleCategory (
+    category_id NUMBER PRIMARY KEY, -- Unique identifier for each vehicle category
+    category_name VARCHAR2(50) NOT NULL, -- Name of the category (e.g., private, commercial)
+    status VARCHAR2(10) NOT NULL CHECK (status IN ('Active', 'Inactive')), -- Active or inactive status
+    added_on DATE DEFAULT SYSDATE, -- Date when the record was added
+    added_by VARCHAR2(50) -- Identifier for who added the record
+);
+
+
+---------------------Data to insert in this table-------------------------------
+
+
+
+INSERT INTO VehicleCategory (category_id, category_name, status, added_by)
+VALUES (1, 'Private', 'Active', 'Admin');
+
+INSERT INTO VehicleCategory (category_id, category_name, status, added_by)
+VALUES (2, 'Commercial', 'Active', 'Admin');
+
+INSERT INTO VehicleCategory (category_id, category_name, status, added_by)
+VALUES (3, 'Taxi', 'Active', 'Admin');
+
+INSERT INTO VehicleCategory (category_id, category_name, status, added_by)
+VALUES (4, 'Motorcycle', 'Active', 'Admin');
+
+INSERT INTO VehicleCategory (category_id, category_name, status, added_by)
+VALUES (5, 'Sports', 'Active', 'Admin');
+
+INSERT INTO VehicleCategory (category_id, category_name, status, added_by)
+VALUES (6, 'Electric Vehicle', 'Active', 'Admin');
+
+INSERT INTO VehicleCategory (category_id, category_name, status, added_by)
+VALUES (7, 'Hybrid', 'Active', 'Admin');
+
+INSERT INTO VehicleCategory (category_id, category_name, status, added_by)
+VALUES (8, 'Agricultural', 'Active', 'Admin');
+
+INSERT INTO VehicleCategory (category_id, category_name, status, added_by)
+VALUES (9, 'Construction', 'Active', 'Admin');
+
+INSERT INTO VehicleCategory (category_id, category_name, status, added_by)
+VALUES (10, 'Emergency Services', 'Active', 'Admin');
+
+INSERT INTO VehicleCategory (category_id, category_name, status, added_by)
+VALUES (11, 'Military', 'Active', 'Admin');
+
+INSERT INTO VehicleCategory (category_id, category_name, status, added_by)
+VALUES (12, 'Passenger Bus', 'Active', 'Admin');
+
+INSERT INTO VehicleCategory (category_id, category_name, status, added_by)
+VALUES (13, 'School Bus', 'Active', 'Admin');
+
+INSERT INTO VehicleCategory (category_id, category_name, status, added_by)
+VALUES (14, 'Heavy Truck', 'Active', 'Admin');
+
+INSERT INTO VehicleCategory (category_id, category_name, status, added_by)
+VALUES (15, 'Light Truck', 'Active', 'Admin');
+
+INSERT INTO VehicleCategory (category_id, category_name, status, added_by)
+VALUES (16, 'Luxury', 'Active', 'Admin');
+
+INSERT INTO VehicleCategory (category_id, category_name, status, added_by)
+VALUES (17, 'Convertible', 'Active', 'Admin');
+
+INSERT INTO VehicleCategory (category_id, category_name, status, added_by)
+VALUES (18, 'Off-road', 'Active', 'Admin');
+
+INSERT INTO VehicleCategory (category_id, category_name, status, added_by)
+VALUES (19, 'Van', 'Active', 'Admin');
+
+INSERT INTO VehicleCategory (category_id, category_name, status, added_by)
+VALUES (20, 'Mini Truck', 'Active', 'Admin');
+
+INSERT INTO VehicleCategory (category_id, category_name, status, added_by)
+VALUES (21, 'Tanker', 'Active', 'Admin');
+
+INSERT INTO VehicleCategory (category_id, category_name, status, added_by)
+VALUES (22, 'Utility Vehicle', 'Active', 'Admin');
+
+INSERT INTO VehicleCategory (category_id, category_name, status, added_by)
+VALUES (23, 'Ambulance', 'Active', 'Admin');
+
+
+
+-----------------------------------------Table of VehicleBodyType--------------------------------------------------------------
+
+
+
+CREATE TABLE VehicleBodyType (
+    body_type_id NUMBER PRIMARY KEY, -- Unique identifier for each body type
+    body_type_name VARCHAR2(50) NOT NULL, -- Name of the body type (e.g., sedan, jeep)
+    status VARCHAR2(10) NOT NULL CHECK (status IN ('Active', 'Inactive')), -- Active or inactive status
+    added_on DATE DEFAULT SYSDATE, -- Date when the record was added
+    added_by VARCHAR2(50) -- Identifier for who added the record
+);
+
+
+
+---------------------DATA TO INSERT IN THIS TABLE----------------------------------
+
+
+
+
+INSERT INTO VehicleBodyType (body_type_id, body_type_name, status, added_by)
+VALUES (1, 'Sedan', 'Active', 'Admin');
+
+INSERT INTO VehicleBodyType (body_type_id, body_type_name, status, added_by)
+VALUES (2, 'Jeep', 'Active', 'Admin');
+
+INSERT INTO VehicleBodyType (body_type_id, body_type_name, status, added_by)
+VALUES (3, '4x4', 'Active', 'Admin');
+
+INSERT INTO VehicleBodyType (body_type_id, body_type_name, status, added_by)
+VALUES (4, 'Wagon', 'Active', 'Admin');
+
+INSERT INTO VehicleBodyType (body_type_id, body_type_name, status, added_by)
+VALUES (5, 'Hatchback', 'Active', 'Admin');
+
+INSERT INTO VehicleBodyType (body_type_id, body_type_name, status, added_by)
+VALUES (6, 'SUV', 'Active', 'Admin');
+
+INSERT INTO VehicleBodyType (body_type_id, body_type_name, status, added_by)
+VALUES (7, 'Crossover', 'Active', 'Admin');
+
+INSERT INTO VehicleBodyType (body_type_id, body_type_name, status, added_by)
+VALUES (8, 'Pickup Truck', 'Active', 'Admin');
+
+INSERT INTO VehicleBodyType (body_type_id, body_type_name, status, added_by)
+VALUES (9, 'Van', 'Active', 'Admin');
+
+INSERT INTO VehicleBodyType (body_type_id, body_type_name, status, added_by)
+VALUES (10, 'Minivan', 'Active', 'Admin');
+
+INSERT INTO VehicleBodyType (body_type_id, body_type_name, status, added_by)
+VALUES (11, 'Convertible', 'Active', 'Admin');
+
+INSERT INTO VehicleBodyType (body_type_id, body_type_name, status, added_by)
+VALUES (12, 'Coupe', 'Active', 'Admin');
+
+INSERT INTO VehicleBodyType (body_type_id, body_type_name, status, added_by)
+VALUES (13, 'Sports Car', 'Active', 'Admin');
+
+INSERT INTO VehicleBodyType (body_type_id, body_type_name, status, added_by)
+VALUES (14, 'Roadster', 'Active', 'Admin');
+
+INSERT INTO VehicleBodyType (body_type_id, body_type_name, status, added_by)
+VALUES (15, 'Limousine', 'Active', 'Admin');
+
+INSERT INTO VehicleBodyType (body_type_id, body_type_name, status, added_by)
+VALUES (16, 'Microcar', 'Active', 'Admin');
+
+INSERT INTO VehicleBodyType (body_type_id, body_type_name, status, added_by)
+VALUES (17, 'City Car', 'Active', 'Admin');
+
+INSERT INTO VehicleBodyType (body_type_id, body_type_name, status, added_by)
+VALUES (18, 'Muscle Car', 'Active', 'Admin');
+
+INSERT INTO VehicleBodyType (body_type_id, body_type_name, status, added_by)
+VALUES (19, 'Off-road Vehicle', 'Active', 'Admin');
+
+INSERT INTO VehicleBodyType (body_type_id, body_type_name, status, added_by)
+VALUES (20, 'Luxury Sedan', 'Active', 'Admin');
+
+INSERT INTO VehicleBodyType (body_type_id, body_type_name, status, added_by)
+VALUES (21, 'Classic Car', 'Active', 'Admin');
+
+INSERT INTO VehicleBodyType (body_type_id, body_type_name, status, added_by)
+VALUES (22, 'Tanker', 'Active', 'Admin');
+
+INSERT INTO VehicleBodyType (body_type_id, body_type_name, status, added_by)
+VALUES (23, 'Cab-over Truck', 'Active', 'Admin');
+
+INSERT INTO VehicleBodyType (body_type_id, body_type_name, status, added_by)
+VALUES (24, 'Flatbed Truck', 'Active', 'Admin');
+
+INSERT INTO VehicleBodyType (body_type_id, body_type_name, status, added_by)
+VALUES (25, 'Camper Van', 'Active', 'Admin');
+
+
+
+
+
+-------------------------------------------Table of regionstatecity---------------------------------------------------------------------
+
+
+
+create table regionstatecity (
+ID number primary key,
+region_name varchar(30) not null,
+state_name varchar(30) not null,
+city_name varchar(30) not null,
+status varchar(30) not null check(status in('Active','Inactive')),
+added_on date default sysdate,
+added_by varchar(25)
+);
+
+
+
+----------------------------------DATA TO INSERT IN THIS TABLE-------------------------------------
+
+
+
+
+INSERT INTO RegionStateCity (id, region_name, state_name, city_name, status, added_by)
+VALUES (1, 'North', 'California', 'Los Angeles', 'Active', 'Admin');
+
+INSERT INTO RegionStateCity (id, region_name, state_name, city_name, status, added_by)
+VALUES (2, 'North', 'California', 'San Francisco', 'Active', 'Admin');
+
+INSERT INTO RegionStateCity (id, region_name, state_name, city_name, status, added_by)
+VALUES (3, 'South', 'Texas', 'Houston', 'Active', 'Admin');
+
+INSERT INTO RegionStateCity (id, region_name, state_name, city_name, status, added_by)
+VALUES (4, 'South', 'Texas', 'Austin', 'Active', 'Admin');
+
+INSERT INTO RegionStateCity (id, region_name, state_name, city_name, status, added_by)
+VALUES (5, 'East', 'New York', 'New York City', 'Active', 'Admin');
+
+INSERT INTO RegionStateCity (id, region_name, state_name, city_name, status, added_by)
+VALUES (6, 'East', 'New York', 'Albany', 'Active', 'Admin');
+
+INSERT INTO RegionStateCity (id, region_name, state_name, city_name, status, added_by)
+VALUES (7, 'West', 'Washington', 'Seattle', 'Active', 'Admin');
+
+INSERT INTO RegionStateCity (id, region_name, state_name, city_name, status, added_by)
+VALUES (8, 'West', 'Oregon', 'Portland', 'Active', 'Admin');
+
+INSERT INTO RegionStateCity (id, region_name, state_name, city_name, status, added_by)
+VALUES (9, 'Midwest', 'Illinois', 'Chicago', 'Active', 'Admin');
+
+INSERT INTO RegionStateCity (id, region_name, state_name, city_name, status, added_by)
+VALUES (10, 'Midwest', 'Ohio', 'Columbus', 'Active', 'Admin');
+
+INSERT INTO RegionStateCity (id, region_name, state_name, city_name, status, added_by)
+VALUES (11, 'South', 'Florida', 'Miami', 'Active', 'Admin');
+
+INSERT INTO RegionStateCity (id, region_name, state_name, city_name, status, added_by)
+VALUES (12, 'South', 'Florida', 'Orlando', 'Active', 'Admin');
+
+INSERT INTO RegionStateCity (id, region_name, state_name, city_name, status, added_by)
+VALUES (13, 'North', 'Washington', 'Spokane', 'Active', 'Admin');
+
+INSERT INTO RegionStateCity (id, region_name, state_name, city_name, status, added_by)
+VALUES (14, 'West', 'Nevada', 'Las Vegas', 'Active', 'Admin');
+
+INSERT INTO RegionStateCity (id, region_name, state_name, city_name, status, added_by)
+VALUES (15, 'East', 'Pennsylvania', 'Philadelphia', 'Active', 'Admin');
+
+INSERT INTO RegionStateCity (id, region_name, state_name, city_name, status, added_by)
+VALUES (16, 'Midwest', 'Michigan', 'Detroit', 'Active', 'Admin');
+
+INSERT INTO RegionStateCity (id, region_name, state_name, city_name, status, added_by)
+VALUES (17, 'Midwest', 'Minnesota', 'Minneapolis', 'Active', 'Admin');
+
+INSERT INTO RegionStateCity (id, region_name, state_name, city_name, status, added_by)
+VALUES (18, 'North', 'Massachusetts', 'Boston', 'Active', 'Admin');
+
+INSERT INTO RegionStateCity (id, region_name, state_name, city_name, status, added_by)
+VALUES (19, 'South', 'Georgia', 'Atlanta', 'Active', 'Admin');
+
+INSERT INTO RegionStateCity (id, region_name, state_name, city_name, status, added_by)
+VALUES (20, 'East', 'Virginia', 'Richmond', 'Active', 'Admin');
+
+INSERT INTO RegionStateCity (id, region_name, state_name, city_name, status, added_by)
+VALUES (21, 'West', 'Arizona', 'Phoenix', 'Active', 'Admin');
+
+INSERT INTO RegionStateCity (id, region_name, state_name, city_name, status, added_by)
+VALUES (22, 'West', 'Colorado', 'Denver', 'Active', 'Admin');
+
+INSERT INTO RegionStateCity (id, region_name, state_name, city_name, status, added_by)
+VALUES (23, 'South', 'Alabama', 'Birmingham', 'Active', 'Admin');
+
+INSERT INTO RegionStateCity (id, region_name, state_name, city_name, status, added_by)
+VALUES (24, 'North', 'New Jersey', 'Newark', 'Active', 'Admin');
+
+INSERT INTO RegionStateCity (id, region_name, state_name, city_name, status, added_by)
+VALUES (25, 'East', 'Maryland', 'Baltimore', 'Active', 'Admin');
+
+
+
+
+-----------------------------------------------Table of Premium_RateConfig--------------------------------------------------
+
+
+
+CREATE TABLE Premium_RateConfig (
+    config_id NUMBER PRIMARY KEY, -- Unique identifier for each configuration
+    coverage_type VARCHAR2(50) NOT NULL, -- Coverage type (e.g., Comprehensive, TPL)
+    vehicle_category VARCHAR2(50) NOT NULL, -- Vehicle category (e.g., Private, Commercial)
+    base_rate NUMBER(10, 2) NOT NULL, -- Base rate for premium calculation
+    additional_rate NUMBER(10, 2), -- Additional rate for specific cases (e.g., Add-ons)
+    tax_rate NUMBER(5, 2) NOT NULL, -- Tax rate applicable to the premium
+    effective_date DATE NOT NULL, -- Start date when the configuration is valid
+    expiry_date DATE, -- End date when the configuration is no longer valid
+    status VARCHAR2(10) NOT NULL CHECK (status IN ('Active', 'Inactive')), -- Configuration status
+    added_on DATE DEFAULT SYSDATE, -- Date the record was added
+    added_by VARCHAR2(50) -- User or process that added the record
+);
+
+
+
+---------------------------------------Data Of Premium_RateConfig---------------------------------------
+
+
+
+
+INSERT INTO Premium_RateConfig (config_id, coverage_type, vehicle_category, base_rate, additional_rate, tax_rate, effective_date, expiry_date, status, added_by)
+VALUES (1, 'Comprehensive', 'Private', 1000.00, 200.00, 18.00, TO_DATE('2024-01-01', 'YYYY-MM-DD'), NULL, 'Active', 'Admin');
+
+INSERT INTO Premium_RateConfig (config_id, coverage_type, vehicle_category, base_rate, additional_rate, tax_rate, effective_date, expiry_date, status, added_by)
+VALUES (2, 'Comprehensive', 'Commercial', 1500.00, 300.00, 18.00, TO_DATE('2024-01-01', 'YYYY-MM-DD'), NULL, 'Active', 'Admin');
+
+INSERT INTO Premium_RateConfig (config_id, coverage_type, vehicle_category, base_rate, additional_rate, tax_rate, effective_date, expiry_date, status, added_by)
+VALUES (3, 'Comprehensive', 'Taxi', 1200.00, 250.00, 18.00, TO_DATE('2024-01-01', 'YYYY-MM-DD'), NULL, 'Active', 'Admin');
+
+INSERT INTO Premium_RateConfig (config_id, coverage_type, vehicle_category, base_rate, additional_rate, tax_rate, effective_date, expiry_date, status, added_by)
+VALUES (4, 'Comprehensive', 'Motorcycle', 800.00, 150.00, 18.00, TO_DATE('2024-01-01', 'YYYY-MM-DD'), NULL, 'Active', 'Admin');
+
+INSERT INTO Premium_RateConfig (config_id, coverage_type, vehicle_category, base_rate, additional_rate, tax_rate, effective_date, expiry_date, status, added_by)
+VALUES (5, 'Comprehensive', 'Sports', 2000.00, 500.00, 18.00, TO_DATE('2024-01-01', 'YYYY-MM-DD'), NULL, 'Active', 'Admin');
+
+INSERT INTO Premium_RateConfig (config_id, coverage_type, vehicle_category, base_rate, additional_rate, tax_rate, effective_date, expiry_date, status, added_by)
+VALUES (6, 'Comprehensive', 'Electric Vehicle', 1800.00, 350.00, 18.00, TO_DATE('2024-01-01', 'YYYY-MM-DD'), NULL, 'Active', 'Admin');
+
+INSERT INTO Premium_RateConfig (config_id, coverage_type, vehicle_category, base_rate, additional_rate, tax_rate, effective_date, expiry_date, status, added_by)
+VALUES (7, 'Comprehensive', 'Luxury', 3000.00, 700.00, 18.00, TO_DATE('2024-01-01', 'YYYY-MM-DD'), NULL, 'Active', 'Admin');
+
+INSERT INTO Premium_RateConfig (config_id, coverage_type, vehicle_category, base_rate, additional_rate, tax_rate, effective_date, expiry_date, status, added_by)
+VALUES (8, 'Comprehensive', 'Classic Car', 2500.00, 600.00, 18.00, TO_DATE('2024-01-01', 'YYYY-MM-DD'), NULL, 'Active', 'Admin');
+
+INSERT INTO Premium_RateConfig (config_id, coverage_type, vehicle_category, base_rate, additional_rate, tax_rate, effective_date, expiry_date, status, added_by)
+VALUES (9, 'Comprehensive', 'Tanker', 4000.00, 800.00, 18.00, TO_DATE('2024-01-01', 'YYYY-MM-DD'), NULL, 'Active', 'Admin');
+
+INSERT INTO Premium_RateConfig (config_id, coverage_type, vehicle_category, base_rate, additional_rate, tax_rate, effective_date, expiry_date, status, added_by)
+VALUES (10, 'Comprehensive', 'Ambulance', 1800.00, 300.00, 18.00, TO_DATE('2024-01-01', 'YYYY-MM-DD'), NULL, 'Active', 'Admin');
+
+-- Third Party Liability (TPL) coverage
+INSERT INTO Premium_RateConfig (config_id, coverage_type, vehicle_category, base_rate, additional_rate, tax_rate, effective_date, expiry_date, status, added_by)
+VALUES (11, 'TPL', 'Private', 500.00, 50.00, 18.00, TO_DATE('2024-01-01', 'YYYY-MM-DD'), NULL, 'Active', 'Admin');
+
+INSERT INTO Premium_RateConfig (config_id, coverage_type, vehicle_category, base_rate, additional_rate, tax_rate, effective_date, expiry_date, status, added_by)
+VALUES (12, 'TPL', 'Commercial', 800.00, 100.00, 18.00, TO_DATE('2024-01-01', 'YYYY-MM-DD'), NULL, 'Active', 'Admin');
+
+INSERT INTO Premium_RateConfig (config_id, coverage_type, vehicle_category, base_rate, additional_rate, tax_rate, effective_date, expiry_date, status, added_by)
+VALUES (13, 'TPL', 'Taxi', 600.00, 80.00, 18.00, TO_DATE('2024-01-01', 'YYYY-MM-DD'), NULL, 'Active', 'Admin');
+
+INSERT INTO Premium_RateConfig (config_id, coverage_type, vehicle_category, base_rate, additional_rate, tax_rate, effective_date, expiry_date, status, added_by)
+VALUES (14, 'TPL', 'Motorcycle', 400.00, 50.00, 18.00, TO_DATE('2024-01-01', 'YYYY-MM-DD'), NULL, 'Active', 'Admin');
+
+INSERT INTO Premium_RateConfig (config_id, coverage_type, vehicle_category, base_rate, additional_rate, tax_rate, effective_date, expiry_date, status, added_by)
+VALUES (15, 'TPL', 'Sports', 1200.00, 200.00, 18.00, TO_DATE('2024-01-01', 'YYYY-MM-DD'), NULL, 'Active', 'Admin');
+
+INSERT INTO Premium_RateConfig (config_id, coverage_type, vehicle_category, base_rate, additional_rate, tax_rate, effective_date, expiry_date, status, added_by)
+VALUES (16, 'TPL', 'Electric Vehicle', 900.00, 100.00, 18.00, TO_DATE('2024-01-01', 'YYYY-MM-DD'), NULL, 'Active', 'Admin');
+
+INSERT INTO Premium_RateConfig (config_id, coverage_type, vehicle_category, base_rate, additional_rate, tax_rate, effective_date, expiry_date, status, added_by)
+VALUES (17, 'TPL', 'Luxury', 1500.00, 300.00, 18.00, TO_DATE('2024-01-01', 'YYYY-MM-DD'), NULL, 'Active', 'Admin');
+
+INSERT INTO Premium_RateConfig (config_id, coverage_type, vehicle_category, base_rate, additional_rate, tax_rate, effective_date, expiry_date, status, added_by)
+VALUES (18, 'TPL', 'Classic Car', 1200.00, 250.00, 18.00, TO_DATE('2024-01-01', 'YYYY-MM-DD'), NULL, 'Active', 'Admin');
+
+INSERT INTO Premium_RateConfig (config_id, coverage_type, vehicle_category, base_rate, additional_rate, tax_rate, effective_date, expiry_date, status, added_by)
+VALUES (19, 'TPL', 'Tanker', 2000.00, 400.00, 18.00, TO_DATE('2024-01-01', 'YYYY-MM-DD'), NULL, 'Active', 'Admin');
+
+INSERT INTO Premium_RateConfig (config_id, coverage_type, vehicle_category, base_rate, additional_rate, tax_rate, effective_date, expiry_date, status, added_by)
+VALUES (20, 'TPL', 'Ambulance', 1000.00, 200.00, 18.00, TO_DATE('2024-01-01', 'YYYY-MM-DD'), NULL, 'Active', 'Admin');
+
+INSERT INTO Premium_RateConfig (config_id, coverage_type, vehicle_category, base_rate, additional_rate, tax_rate, effective_date, expiry_date, status, added_by)
+VALUES (21, 'Comprehensive', 'Minivan', 1400.00, 250.00, 18.00, TO_DATE('2024-01-01', 'YYYY-MM-DD'), NULL, 'Active', 'Admin');
+
+INSERT INTO Premium_RateConfig (config_id, coverage_type, vehicle_category, base_rate, additional_rate, tax_rate, effective_date, expiry_date, status, added_by)
+VALUES (22, 'TPL', 'Minivan', 700.00, 150.00, 18.00, TO_DATE('2024-01-01', 'YYYY-MM-DD'), NULL, 'Active', 'Admin');
+
+INSERT INTO Premium_RateConfig (config_id, coverage_type, vehicle_category, base_rate, additional_rate, tax_rate, effective_date, expiry_date, status, added_by)
+VALUES (23, 'Comprehensive', 'Pickup Truck', 1800.00, 300.00, 18.00, TO_DATE('2024-01-01', 'YYYY-MM-DD'), NULL, 'Active', 'Admin');
+
+INSERT INTO Premium_RateConfig (config_id, coverage_type, vehicle_category, base_rate, additional_rate, tax_rate, effective_date, expiry_date, status, added_by)
+VALUES (24, 'TPL', 'Pickup Truck', 900.00, 100.00, 18.00, TO_DATE('2024-01-01', 'YYYY-MM-DD'), NULL, 'Active', 'Admin');
+
+INSERT INTO Premium_RateConfig (config_id, coverage_type, vehicle_category, base_rate, additional_rate, tax_rate, effective_date, expiry_date, status, added_by)
+VALUES (25, 'Comprehensive', 'Heavy Truck', 2500.00, 600.00, 18.00, TO_DATE('2024-01-01', 'YYYY-MM-DD'), NULL, 'Active', 'Admin');
+
+
+
+
+------------------------------SEQUENCE CREATION-----------------------------------
+ 
+
+customer id   #1
+ user id      #2
+ quote id     #3
+
+
+
+create SEQUENCE cus_id_seq
+start with 1
+increment by 1
+nomaxvalue;
+
+
+create SEQUENCE user_id_seq
+start with 1
+increment by 1
+nomaxvalue;
+
+
+create SEQUENCE quo_id_seq
+start with 1
+increment by 1
+nomaxvalue;
