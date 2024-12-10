@@ -31,9 +31,9 @@ MOTORAMATE is a comprehensive workflow system designed to streamline the process
 
 ## Technologies Used
 
-- **Programming Languages**: [Add specific languages like Java, C#, Python, etc.]  
-- **Database**: [Specify database used, e.g., MySQL, PostgreSQL, etc.]  
-- **Other Tools**: [Mention any tools or libraries, e.g., Spring Boot, .NET Framework, etc.]  
+- **Programming Languages**: SQL  
+- **Database**: Oracle SQL 11G
+- **Other Tools**: SQL Developer 19.2
 
 ## How to Run
 
